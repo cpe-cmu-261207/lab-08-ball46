@@ -26,6 +26,20 @@ export default function Home() {
     setPixels(CanvasLib.createEmptyCanvas());
   };
 
+  const [intervalId, setIntervalId] = useState([]);
+
+  const playDisco = () => {
+    const id = setInterval(
+      () => setPixels(CanvasLib.createRandomCanvas()),
+      100
+    );
+    setIntervalId([...intervalId, id]);
+  };
+
+  const stopDisco = () => {
+    for (const id of intervalId) clearInterval(id);
+  };
+
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "GhostWhite" }}>
       <PainterContext.Provider value={{ selColor, setSelColor, pixels, paint }}>
@@ -42,6 +56,12 @@ export default function Home() {
             onClick={() => setPixels(CanvasLib.createRandomCanvas())}
           >
             Random Color
+          </button>
+          <button className="btn btn-dark" onClick={playDisco}>
+            Play Disco
+          </button>
+          <button className="btn btn-dark" onClick={stopDisco}>
+            stopDisco
           </button>
         </div>
       </PainterContext.Provider>
