@@ -18,10 +18,11 @@ export default function Cell(props) {
         borderWidth: "1px",
         borderStyle: "solid",
         margin: "0px",
+        backgroundColor: pixels[yPos][xPos],
       }}
       onClick={() => {
         //when clicked, set pixels data at position xPos, yPos with selected color
-        //you code here
+        paint(xPos, yPos);
       }}
     ></div>
   );
