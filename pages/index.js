@@ -14,10 +14,10 @@ export default function Home() {
   const [pixels, setPixels] = useState(CanvasLib.createEmptyCanvas());
 
   //will be called by Cell component
-  const paint = (yPos, xPos) => {
+  const paint = (xPos, yPos) => {
     //copy from old 2d Array
     const newPixels = CanvasLib.copyCanvas(pixels);
-    newPixels[xPos][yPos] = selColor;
+    newPixels[yPos][xPos] = selColor;
     setPixels(newPixels);
   };
 
